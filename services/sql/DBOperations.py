@@ -25,8 +25,6 @@ class DBOperations:
                 Fetch all rows of a query result set and returns a list of tuples.
                 If no more rows are available, it returns an empty list."""
                 result = cursor.fetchall()
-            else:
-                result = None
 
         except Exception as e:
             log.info("Some execption occured:"+str(e))

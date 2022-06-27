@@ -27,12 +27,12 @@ def get_product_or_products(query_param_product_id):
                 obj[col] = row[i]
 
             data.append(obj)
-            
+
         return {"status": "Successfully Fetched!", "data": data}, 200
 
     except NoDataFoundException as ndfe:
-        log.error("Exception occured: "+str(ndfe))
-        return {"error": "No Data found"}, 404
+        log.error("Exception occured: No Data Found.")
+        return {"error": "No Data found."}, 404
     except Exception as e:
         log.error("Some error occured: "+str(e))
-        return {"error": "Some error occured"}, 400
+        return {"error": "Some error occured."}, 400

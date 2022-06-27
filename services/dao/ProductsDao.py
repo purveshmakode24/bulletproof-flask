@@ -1,28 +1,29 @@
 import logging
 
+from sql.DBOperations import DBOperations
+
 log = logging.getLogger("DAO: ProductsDao")
 
-db = [{"id": 1000, "product_name": "ABC"},
-      {"id": 1001, "product_name": "XYZ"},
-      {"id": 1002, "product_name": "PQR"}]
+# db = [{"id": 1000, "product_name": "ABC"},
+#       {"id": 1001, "product_name": "XYZ"},
+#       {"id": 1002, "product_name": "PQR"}]
 
 
 def get_products_dao():
-    query=''''''
+    query='''SELECT product_id, product_name, price from products'''
     params = []
     try:
-        return db
+        op = DBOperations().runSelectQuery(query, params)
+        return op
     except Exception as e:
         log.error("Some exception occured: "+str(e))
 
 
 def get_product_dao(product_id):
-    query=''''''
-    params = []
+    query='''SELECT product_id, product_name, price from products where product_id=%s'''
+    params = [product_id]
     try:
-        for p in db:
-            if p['id'] == int(product_id):
-                return p
-        return {}
+        op = DBOperations().runSelectQuery(query, params)
+        return op
     except Exception as e:
         log.error("Some exception occured: "+str(e))

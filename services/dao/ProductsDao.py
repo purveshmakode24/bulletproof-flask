@@ -10,7 +10,7 @@ log = logging.getLogger("DAO: ProductsDao")
 
 
 def get_products_dao():
-    query='''SELECT product_id, product_name, price from products'''
+    query = '''SELECT product_id, product_name, price from products'''
     params = []
     try:
         op = DBOperations().runSelectQuery(query, params)
@@ -20,7 +20,9 @@ def get_products_dao():
 
 
 def get_product_dao(product_id):
-    query='''SELECT product_id, product_name, price from products where product_id=%s'''
+    query = '''SELECT product_id, product_name, price \
+            from products where product_id=%s'''
+
     params = [product_id]
     try:
         op = DBOperations().runSelectQuery(query, params)

@@ -1,4 +1,4 @@
-from utility.commons import *
+from utility.commons import DB, USER, DB_PASS, HOST, PORT
 
 database = DB
 user = USER

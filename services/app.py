@@ -1,13 +1,16 @@
-import os
-import sys
 from flask import Flask
-from controller import *
+from controller import api
 from utility.commons import LOG
 import logging
 
 app = Flask(__name__)
 
-logging.basicConfig(filename=str(LOG), encoding='utf-8', level= logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
+logging.basicConfig(
+    filename=str(LOG),
+    encoding='utf-8',
+    level=logging.DEBUG,
+    format='%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
+
 log = logging.getLogger('app.py')
 
 

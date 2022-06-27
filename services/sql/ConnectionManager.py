@@ -4,6 +4,7 @@ import logging
 
 log = logging.getLogger('DBCONNECTION')
 
+
 class DBInitiateConnection(object):
     _instance = None
 
@@ -34,15 +35,15 @@ class DBConnection:
     def getConnectionPool(self):
         self.dbConnectionPool = DBInitiateConnection()._instance
         return self.dbConnectionPool
-    
+
     """Method to get the connection from a given pool."""
     def getConnection(self):
         connectionPool = self.getConnectionPool()
         return connectionPool.getconn()
-    
-    """Method to commit the connection, given connection object as input. 
-    Mandatory to call this method after any insertion or updation to ensure 
-    that data is persisted in database successfully.
+
+    """Method to commit the connection, given connection object as input.
+    Mandatory to call this method after any insertion or updation
+    or delete to ensure that data is persisted in database successfully.
     """
     def commit(self, connection):
         connection.commit()
@@ -52,16 +53,12 @@ class DBConnection:
     def close(self, connection):
         connectionPool = self.getConnectionPool()
         connectionPool.putconn(connection, close=True)
-    
+
     def closeAll(self):
         connectionPool = self.getConnectionPool()
         connectionPool.closeall()
-    
+
     def delete(self, query, connection):
         cursor = connection.cursor()
         cursor.execute(query)
         self.commit(connection)
-
-
-
-

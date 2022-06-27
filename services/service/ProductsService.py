@@ -1,9 +1,8 @@
 import logging
-from msilib.schema import Error
-
 from dao.ProductsDao import get_product_dao, get_products_dao
 
 log = logging.getLogger("Service: ProductsService")
+
 
 class NoDataFoundException(Exception):
     pass
@@ -30,7 +29,7 @@ def get_product_or_products(query_param_product_id):
 
         return {"status": "Successfully Fetched!", "data": data}, 200
 
-    except NoDataFoundException as ndfe:
+    except NoDataFoundException:
         log.error("Exception occured: No Data Found.")
         return {"error": "No Data found."}, 404
     except Exception as e:

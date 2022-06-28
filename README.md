@@ -16,8 +16,6 @@ This is not supposed to be a template, boilerplate or a framework. It is an opin
 
 #### Directory tree structure:
 
-> Note: Add log directory in root if not present.
-  
     ├── config
     ├── log      # Required                                
     ├── services
@@ -51,6 +49,39 @@ This is not supposed to be a template, boilerplate or a framework. It is an opin
     ├── .gitignore
     ├── LICENSE
     └── README.md
+
+## Installation
+
+- Fork the repo.
+- Clone the repo.
+```
+git clone https://github.com/purveshmakode24/bulletproof-flask.git
+```
+```
+cd bulletproof-flask
+```
+- Create & Activate virtual environment.
+```
+python -m venv venv
+
+venv\Scripts\activate
+```
+- Install dependencies.
+```
+pip install -r requirements.txt
+```
+- Modify config.ini as per your requirements.
+
+### Running
+
+> Note: Add log directory in root if not present.
+
+```
+cd services
+
+python app.py [YOUR_DB_PASS]
+```
+- Head over to localhost:5000 in your browser.
 
 ## Contributing
 

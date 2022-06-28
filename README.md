@@ -72,7 +72,7 @@ pip install -r requirements.txt
 ```
 - Modify config.ini as per your requirements.
 
-### Running
+## Running
 
 > Note: Add log directory in root if not present.
 

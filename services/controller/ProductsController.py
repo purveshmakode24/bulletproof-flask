@@ -29,3 +29,14 @@ class Products(Resource):
         except Exception as e:
             log.info("Unknown Exception"+str(e))
             return {"error": "Unknown Exception"}, 400
+
+    # post_parser = reqparse.RequestParser()
+    # post_parser.add_argument('id', required=False, type=int, location='args')
+
+    # @ns.response(403, 'Forbidden')
+    # @ns.response(400, 'Unknown Exception')
+    # @ns.doc(parser=post_parser)  # OR
+    # @ns.expect(post_parser)
+    # def post(self):
+    # '''Post a product'''
+    #     pass

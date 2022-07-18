@@ -7,6 +7,16 @@ import logging
 log = logging.getLogger("Controller: ProductsController")
 ns = ProductsModel.ns
 
+# """ Model for documenting the POST API for the Payload"""
+# payload_resource = ns.model(
+#     "payload_resource",
+#     {
+#         "title": fields.String,
+#         "description": fields.String,
+#         "user_id": fields.Integer
+#     }
+# )
+
 
 @ns.route('/products')
 class Products(Resource):
@@ -35,8 +45,10 @@ class Products(Resource):
 
     # @ns.response(403, 'Forbidden')
     # @ns.response(400, 'Unknown Exception')
-    # @ns.doc(parser=post_parser)  # OR
-    # @ns.expect(post_parser)
+    # # @ns.doc(parser = post_parser)  # OR
+    # # @ns.expect(post_parser)  # OR
+    # @ns.doc(parser = payload_resource)  # OR
+    # # @ns.expect(payload_resource)
     # def post(self):
-    # '''Post a product'''
+    #     '''Post a product'''
     #     pass

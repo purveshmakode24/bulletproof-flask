@@ -22,6 +22,12 @@ ns = ProductsModel.ns
 class Products(Resource):
     get_parser = reqparse.RequestParser()
     get_parser.add_argument('id', required=False, type=int, location='args')
+    get_parser.add_argument(
+        'operation_perfomed_by',
+        required=True,
+        type=str,
+        location='headers',
+        help='sql/orm')
 
     @ns.response(404, 'Not found')
     @ns.response(403, 'Forbidden')
@@ -29,12 +35,17 @@ class Products(Resource):
     @ns.doc(parser=get_parser)  # OR
     # @ns.expect(get_parser)
     def get(self):
-        '''Fetch product(s)'''
+        '''Fetch product(s) using sql/orm'''
         try:
             log.info('--------------->Entered ProductsController.')
             query_param_product_id = request.args.get('id')
+            operation_perfomed_by = request.headers.get(
+                'operation_perfomed_by')
 
-            op = get_product_or_products(query_param_product_id)
+            op = get_product_or_products(
+                query_param_product_id,
+                operation_perfomed_by)
+
             return op
         except Exception as e:
             log.info("Unknown Exception"+str(e))

@@ -1,4 +1,5 @@
 [flake8]
-exclude = 
+exclude =
     __pycache__
     venv
+    migrations

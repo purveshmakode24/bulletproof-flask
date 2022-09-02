@@ -4,7 +4,7 @@ import logging
 from distutils.log import error
 # configparser to read config file
 from configparser import ConfigParser
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 
 ROOT_DIR = os.path.dirname(
     os.path.dirname(
@@ -30,3 +30,10 @@ LOG_PATH = config['PATH']['log_path']
 if not (len(sys.argv) == 2 and sys.argv[-1].isdigit()):
     # sys.stderr.write('DB auth failed. Please provide correct DB Credatials.')
     raise error('DB password args is missing!')
+
+if not os.path.exists(LOG_PATH):
+    print('Log directory does not exists. Auto creating log directory...')
+    os.mkdir(LOG_PATH)
+    print(
+        Fore.GREEN + 'Auto creating log directory completed!'
+        + Style.RESET_ALL)
